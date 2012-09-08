@@ -1,0 +1,389 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"div",
+				"divInfo"
+			],
+			[
+				"CSS",
+				"CSS_INFO"
+			],
+			[
+				"rg",
+				"rgba()"
+			],
+			[
+				"mar",
+				"margin-left"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"backgr",
+				"background-size"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"fo",
+				"for	for (…) {…} (Improved Native For-Loop)"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"la",
+				"language"
+			],
+			[
+				"backgrou",
+				"background-image"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"h",
+				"h2	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 87.0,
+		"selected_items":
+		[
+			[
+				"function",
+				"Snippet: Function"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/countdown.html",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/resources/i18n/home_fr.js",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/resources/i18n/home_en.js",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/resources/css/countdown.css",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/resources/css/index.css",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/resources/css/global.css",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/index.html",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/hotel.html",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/church.html",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/resources/css/hotel.css",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/resources/css/menu.css",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/menu.html",
+		"/Users/ronan/dev/usephototree/app/model/Node.js",
+		"/Users/ronan/dev/usephototree/app/store/Nodes.js",
+		"/Users/ronan/dev/usephototree/app.js",
+		"/Users/ronan/dev/usephototree/extjs-4.1.1/src/data/Store.js",
+		"/Users/ronan/dev/usephototree/extjs-4.1.1/src/data/proxy/Server.js",
+		"/Users/ronan/dev/usephototree/extjs-4.1.1/src/data/Connection.js",
+		"/Users/ronan/dev/usephototree/app/model/Style.js",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/resources/css/pola.css",
+		"/Users/ronan/dev/usephototree/config.json",
+		"/Users/ronan/dev/usephototree/config2.json",
+		"/Users/ronan/Desktop/chrome.command",
+		"/Users/ronan/dev/usephototree/app/model/Relationship.js",
+		"/Users/ronan/dev/usephototree/app/model/Translation.js",
+		"/Users/ronan/dev/usephototree/index.html",
+		"/Users/ronan/dev/usephototree/app/controller/NodeLoader.js",
+		"/Users/ronan/dev/lib/js/sencha/extjs-4.1.1/examples/app/feed-viewer/app.js",
+		"/Users/ronan/dev/usephototree/extjs-4.1.1/ext-all-debug.js",
+		"/Users/ronan/dev/usephototree/app/data/configTest.json",
+		"/Users/ronan/dev/usephototree/app/view/Main.js",
+		"/Users/ronan/dev/usephototree/app/model/Nodes.js",
+		"/Users/ronan/Dropbox/dev/lib/js/usephototree/resources/css/uptstyle.css",
+		"/Users/ronan/Dropbox/dev/lib/js/usephototree/resources/css/style.css",
+		"/Users/ronan/Dropbox/dev/lib/js/usephototree/testPage.html",
+		"/Users/ronan/Dropbox/dev/lib/js/usephototree/resources/css/pola.css",
+		"/Users/ronan/Dropbox/dev/lib/js/usephototree/configTest.json",
+		"/Users/ronan/Dropbox/dev/lib/js/usephototree/usephototree.js",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/castle.html",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/photo.html",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/resources/css/church.css",
+		"/Users/ronan/Dropbox/dev/lib/js/usephototree/pola.css",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/resources/css/indexOld.css",
+		"/Users/ronan/Dropbox/dev/lib/js/prototype.js",
+		"/Users/ronan/Dropbox/dev/lib/js/Highcharts-2.2.5/js/highcharts.src.js",
+		"/Users/ronan/Dropbox/dev/lib/js/highslide-4.1.13/highslide/highslide-full.js",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/js/Localization.js",
+		"/Users/ronan/Dropbox/dev/lib/js/usephototree/config.js",
+		"/Users/ronan/Dropbox/dev/lib/js/usephototree/test/SpecRunner.html",
+		"/Users/ronan/Dropbox/dev/lib/js/usephototree/test/spec/test1.js",
+		"/Users/ronan/Dropbox/dev/weddingTest/FullScreen/index.html",
+		"/Users/ronan/Dropbox/dev/weddingTest/FullScreen/index.css",
+		"/Users/ronan/Dropbox/dev/weddingTest/FullScreen/button.css",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/indexOld.html",
+		"/Users/ronan/Dropbox/dev/lib/js/jquery-1.7.2.js",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/js/usephototree.js",
+		"/Users/ronan/Dropbox/dev/lib/js/Highcharts-2.2.5/js/highcharts.js",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/js/highslide.config.js",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/resources/css/photo.css",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/resources/css/kimronan.css",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/resources/css/castle.css",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/favicon.ico",
+		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/js/Polaroid.js",
+		"/Users/ronan/vpn/rqe/rod/rqe.key",
+		"/Users/ronan/Dropbox/dev/test_search_rqe/resources/css/style.css",
+		"/Users/ronan/Dropbox/dev/test_search_rqe/app/view/SearchResultContainer",
+		"/Users/ronan/Dropbox/dev/test_search_rqe/app/view/Main.js",
+		"/Users/ronan/Dropbox/dev/test_search_rqe/app/view/SearchToolbar.js",
+		"/Users/ronan/Dropbox/dev/lib/js/sencha/sencha-touch-2.0.1/examples/kitchensink/app/controller/tablet/Main.js",
+		"/Users/ronan/Dropbox/dev/lib/js/sencha/sencha-touch-2.0.1/examples/kitchensink/app/profile/Phone.js",
+		"/Users/ronan/Dropbox/dev/lib/js/sencha/sencha-touch-2.0.1/examples/kitchensink/app/profile/Tablet.js",
+		"/Users/ronan/Dropbox/dev/lib/js/sencha/sencha-touch-2.0.1/examples/kitchensink/app/controller/phone/Main.js",
+		"/Users/ronan/Dropbox/dev/test_search_rqe/app/controller/Main.js",
+		"/Users/ronan/Dropbox/dev/test_search_rqe/app.js",
+		"/Users/ronan/Dropbox/dev/test_search_rqe/app/controller/tablet/Main.js",
+		"/Users/ronan/Dropbox/dev/lib/js/sencha/sencha-touch-2.0.1/examples/jog-with-friends/app.js",
+		"/Users/ronan/Dropbox/dev/test_search_rqe/app/view/tablet/Main.js",
+		"/Users/ronan/Dropbox/dev/test_search_rqe/app/profile/Tablet.js",
+		"/Users/ronan/Dropbox/dev/test_search_rqe/app/app.js",
+		"/Users/ronan/Dropbox/dev/test_search_rqe/app/view/main.js",
+		"/Users/ronan/Dropbox/dev/lib/js/sencha/sencha-touch-2.0.1/examples/navigationview/app/view/Main.js",
+		"/Users/ronan/Dropbox/dev/lib/js/sencha/sencha-touch-2.0.1/examples/list/app.js",
+		"/Users/ronan/Dropbox/dev/lib/js/sencha/sencha-touch-2.0.1/examples/kitchensink/index.html",
+		"/Users/ronan/Dropbox/Public/SlideShows/shows/Logo o2T/index.html",
+		"/Users/ronan/Dropbox/dev/search_revolution/Search_revolution.html",
+		"/Users/ronan/Dropbox/Public/SlideShows/shows/HTML5/index.html",
+		"/Users/ronan/Dropbox/Public/SlideShows/shows/HTML5/css/style.css",
+		"/Users/ronan/Dropbox/Public/SlideShows/shows/Logo o2T/css/style.css",
+		"/Users/ronan/Dropbox/Public/SlideShows/styles/o2t/css/style.css"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"overflow",
+			"/images/",
+			"debugger",
+			"oncomplete",
+			"Ext.data.store",
+			"load",
+			"node",
+			"CSS_DETAIL",
+			";\n",
+			" debugger;",
+			"getI18n",
+			"highlightNode",
+			"css",
+			"use",
+			"	",
+			"vertical",
+			"	",
+			"vertical",
+			"	",
+			"relative",
+			"id",
+			"fr",
+			"to",
+			"from",
+			"\"\"",
+			"id",
+			"'",
+			"index.css",
+			"kimronan.css",
+			"'));\n",
+			"cls",
+			"label : 'test1',",
+			"label",
+			"label : 'test1',",
+			"return",
+			"jasmine-1.2.0/",
+			"lib/",
+			"	",
+			".thumb.jpg",
+			"highslide/sample-images/",
+			"aveny",
+			"i18n.aveny",
+			"Addresse",
+			"Address",
+			"<title><script>Loc.w(i18n.aveny.title);</script></title>",
+			"i18Manager",
+			"  position: relative;",
+			"olympe",
+			"content",
+			"author",
+			"updated",
+			"title",
+			"id",
+			"'",
+			"                        // ",
+			" docked: 'top'           ",
+			"fullscreen",
+			"requires: [\n        'Ext.Container'\n    ],",
+			"// layout: {\n                    //     type: 'vbox',\n                    //     pack: 'center'\n                    // },",
+			"\n    	// var myToolbar = Ext.create('One2team.view.MainToolbar');\n\n     //    Ext.create('Ext.Panel', {\n     //            fullscreen: true,\n     //            html: 'Hello World!',\n     //            items : [\n	    //             {\n	    //             	mainToolbar: myToolbar\n	    //             }\n     //            ]\n     //        });\n",
+			"			<",
+			"fond"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"/images/countdown/",
+			"getNodeI18n",
+			"renderNodeBig",
+			"csssmall",
+			"upt",
+			"    ",
+			"portrait",
+			"    ",
+			"portrait",
+			"portrait  ",
+			"    ",
+			"uid",
+			"\"fr\"",
+			"\"to\"",
+			"\"from\"",
+			"\"",
+			"\"id\"",
+			"\"",
+			"indexOld.css",
+			"index.css",
+			"jasmine-1.2.0/lib/jasmine-1.2.0/",
+			"../../",
+			"    ",
+			".thumb.png",
+			"resources/images/photos/",
+			"i18n.castle",
+			"Loc",
+			"\"content\"",
+			"\"author\"",
+			"\"updated\"",
+			"\"title\"",
+			"\"id\"",
+			"\""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.jslint_result_view":
+	{
+		"height": 145.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 311.0,
+	"status_bar_visible": true
+}
