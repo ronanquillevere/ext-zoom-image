@@ -4,16 +4,20 @@
 		"selected_items":
 		[
 			[
+				"bor",
+				"border"
+			],
+			[
 				"bac",
-				"background-color"
+				"backgroundUrl"
+			],
+			[
+				"bord",
+				"border"
 			],
 			[
 				"margin",
 				"margin"
-			],
-			[
-				"bor",
-				"border-radius"
 			],
 			[
 				"div",
@@ -71,6 +75,71 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "resources/sass/my-ext-theme.scss",
+			"settings":
+			{
+				"buffer_size": 2032,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app.js",
+			"settings":
+			{
+				"buffer_size": 257,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/view/Gallery.js",
+			"settings":
+			{
+				"buffer_size": 160,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/view/Thumbnail.js",
+			"settings":
+			{
+				"buffer_size": 2021,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controller/Gallery.js",
+			"settings":
+			{
+				"buffer_size": 1712,
+				"line_ending": "Unix",
+				"name": "Ext.define('Ezi.controller.Gallery', {"
+			}
+		},
+		{
+			"file": "/Users/ronan/dev/lib/js/sencha/extjs-4.1.1/examples/app/feed-viewer/app.js",
+			"settings":
+			{
+				"buffer_size": 326,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/ronan/Dropbox/dev/lib/js/usephototree/resources/css/uptstyle.css",
+			"settings":
+			{
+				"buffer_size": 1543,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 298,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -100,6 +169,16 @@
 	},
 	"file_history":
 	[
+		"/Users/ronan/dev/ext-img-zoom/resources/sass/my-ext-theme.scss",
+		"/Users/ronan/dev/ext-img-zoom/index.html",
+		"/Users/ronan/dev/ext-img-zoom/app.js",
+		"/Users/ronan/dev/ext-img-zoom/extjs/resources/themes/templates/resources/sass/config.rb",
+		"/Users/ronan/dev/ext-img-zoom/resources/css/my-ext-theme.css",
+		"/Users/ronan/dev/ext-img-zoom/extjs/resources/themes/templates/resources/sass/my-ext-theme.scss",
+		"/Users/ronan/dev/ext-img-zoom/resources/sass/app.scss",
+		"/Users/ronan/dev/ext-img-zoom/app/controller/Gallery.js",
+		"/Users/ronan/dev/ext-img-zoom/app/controller/Gallery",
+		"/Users/ronan/dev/ext-img-zoom/app/view/Main.js",
 		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/countdown.html",
 		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/resources/i18n/home_fr.js",
 		"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war/resources/i18n/home_en.js",
@@ -199,6 +278,8 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"/Users/ronan/dev/ext-zoom-image/extjs/resources",
+			"/Users/ronan/dev/ext-zoom-image/extjs/resources/themes/stylesheets",
 			"/Users/ronan/Dropbox/Eclipse/Workspace/home/kimronan/war"
 		]
 	},
@@ -207,6 +288,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"x-border-layout-ct",
 			"overflow",
 			"/images/",
 			"debugger",
@@ -319,8 +401,232 @@
 	"groups":
 	[
 		{
+			"selected": 4,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "resources/sass/my-ext-theme.scss",
+					"settings":
+					{
+						"buffer_size": 2032,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1978,
+								1978
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 140.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app.js",
+					"settings":
+					{
+						"buffer_size": 257,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								178,
+								178
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/view/Gallery.js",
+					"settings":
+					{
+						"buffer_size": 160,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								91,
+								101
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/view/Thumbnail.js",
+					"settings":
+					{
+						"buffer_size": 2021,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								78,
+								107
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/controller/Gallery.js",
+					"settings":
+					{
+						"buffer_size": 1712,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1712,
+								1712
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Ext.define('Ezi.controller.Gallery', {",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 185.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/Users/ronan/dev/lib/js/sencha/extjs-4.1.1/examples/app/feed-viewer/app.js",
+					"settings":
+					{
+						"buffer_size": 326,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17,
+								17
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/ronan/Dropbox/dev/lib/js/usephototree/resources/css/uptstyle.css",
+					"settings":
+					{
+						"buffer_size": 1543,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								295,
+								300
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 298,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								282,
+								282
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],

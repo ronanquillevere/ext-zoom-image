@@ -2,10 +2,10 @@
 	"folders":
 	[
 		{
-			"path": "/Users/ronan/dev/ext-img-zoom"
+			"path": "/Users/ronan/dev/ext-zoom-image"
 		},
 		{
-			"path": "/Users/ronan/dev/lib/js/sencha/extjs-4.1.1"
+			"path": "/Users/ronan/dev/lib/js/sencha/extjs-4.1.1/examples"
 		}
 	]
 }

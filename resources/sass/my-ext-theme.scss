@@ -44,6 +44,28 @@ $include-default: false;
 // or a string, of where the path is
 $relative-image-path-for-uis: true; // defaults to "../images/" when true
 
-.gallery{
-	border: solid 1px black;
+.ezi-gallery{
+	border: solid 1px red;
+}
+
+.ezi-thumbnail {
+	background-size: 100% auto;
+    background-position: center center;
+  	background-repeat: no-repeat;
+    margin:10px;
+    border-style: solid;
+    border-width: 3px 3px 30px 3px;
+    border-color: white;
+    box-shadow: 0px 0px 50px 0px black;
+    float: left;
+}
+
+.ezi-viewport.x-border-layout-ct {
+    background-color: #FFFFFF;
+}
+
+.ezi-thumbnail-desc {
+    position: absolute;
+    bottom: -20px;
+    left: 10px;
 }
