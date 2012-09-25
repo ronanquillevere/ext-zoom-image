@@ -24,7 +24,7 @@ Ext.define('Ezi.controller.Gallery', {
         portraitHeight: 245, 
         landscapeWidth: 210,
         landscapeHeight: 245, 
-        margin: 10,
+        margin: 5,
         images:[]
     },
 
@@ -43,9 +43,10 @@ Ext.define('Ezi.controller.Gallery', {
             items: [
             {
                 region: 'north',
-                html: '<h1 class="x-panel-header">Toolbar</h1>',
+                html: '<h1 class="ezi-toolbar">Toolbar</h1>',
                 border: false,
-                margins: '0 0 5 0'
+                margins: '0 0 0 0',
+                cls: 'ezi-gallery-north'
             },{
                 region: 'center',
                 xtype: 'eziGallery', 
@@ -71,7 +72,9 @@ Ext.define('Ezi.controller.Gallery', {
             this.getPortraitWidth(),
             this.getPortraitHeight(),
             s.getAt(i).get('portrait'),
-            s.getAt(i).get('title')));
+            s.getAt(i).get('title'),
+            s.getAt(i).get('miniDesc')
+            ));
         };
 
         this.layoutImages(this.getImages(), this.getPortraitWidth(), this.getLandscapeWidth(), this.getPortraitHeight(), this.getLandscapeHeight(), this.getMargin());
@@ -92,17 +95,12 @@ Ext.define('Ezi.controller.Gallery', {
         this.layoutImages(this.getImages(), this.getPortraitWidth(), this.getLandscapeWidth(), this.getPortraitHeight(), this.getLandscapeHeight(), this.getMargin());
         var images = this.getImages();
 
-        // this.getGallery().removeAll();
-        // this.buildGallery();
-
-
         for (i = 0; i < images.length; i++) {
             img = this.images[i];
              img.animate({
                 to: {
-                    x: this.getMargin() + img.x + 1,
-                    //y: this.getMargin() + this.getHeader().getHeight() + 1 + img.y
-                    y: this.getMargin() + 19 + 1 + img.y
+                    x: this.getMargin() + img.x, //add border width if there is a border to the gallery
+                    y: this.getMargin() + 30 + img.y //add border width if there is a border to the gallery
                 }
             });
          }
@@ -113,24 +111,28 @@ Ext.define('Ezi.controller.Gallery', {
     layoutImages: function (images, portraitWidth, landscapeWidth, portraitHeight, landscapeHeight, margin){
          var nbLandscape = 0,
             nbPortrait = 0,
+            nb = 0,
             line = 0,
             i,
             img,
             tmpx,
-            tmpwidth;
+            tmpwidth,
+            minWidth;
         
         for (i = 0; i < images.length; i++) {
             img = this.images[i];
             
 
             tmpwidth = (img.getPortrait() ? portraitWidth : landscapeWidth);
+            minWidth = (tmpwidth + margin*2);
 
             tmpx = this.computeX(margin, nbLandscape, nbPortrait, landscapeWidth, portraitWidth);
-            
-            if (tmpx > (this.getViewport().getWidth() - (tmpwidth + margin*2))){
+
+           if ( !(nb === 0 && this.getViewport().getWidth() < minWidth) && tmpx > (this.getViewport().getWidth() - minWidth)){
                 line++;
                 nbLandscape = 0;
                 nbPortrait = 0;
+                nb = 0;
                 tmpx = this.computeX(margin, nbLandscape, nbPortrait, landscapeWidth, portraitWidth);
             }
                 
@@ -140,19 +142,20 @@ Ext.define('Ezi.controller.Gallery', {
             if (img.getPortrait())
                 nbPortrait++;
             else
-                nbLandscape++;    
+                nbLandscape++; 
+            nb++;   
         }
     },
 
 
-    createImage: function (thumbUrl, bigUrl, width, height, portrait, description){
+    createImage: function (thumbUrl, bigUrl, width, height, portrait, title, minidesc){
         return  Ext.create('Ezi.view.Image', {
                 width: width,
                 height: height,          
                 thumbBckUrl: thumbUrl,
                 bigBckUrl: bigUrl,
                 portrait: portrait,
-                html: '<div class="ezi-thumbnail-desc">'+ description +'</div>'
+                html: '<div class="ezi-thumbnail-desc"><div class="ezi-thumbnail-title">'+ title +'</div><div class="ezi-thumbnail-minidesc">'+ minidesc +'</div></div>'
         });
     }
 
