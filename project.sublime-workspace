@@ -4,12 +4,80 @@
 		"selected_items":
 		[
 			[
-				"bor",
-				"border"
+				"port",
+				"portrait"
+			],
+			[
+				"portr",
+				"portrait"
 			],
 			[
 				"bac",
-				"backgroundUrl"
+				"background"
+			],
+			[
+				"fonts",
+				"font-style"
+			],
+			[
+				"font",
+				"font-style"
+			],
+			[
+				"getH",
+				"getHeight"
+			],
+			[
+				"s",
+				"selector"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"getP",
+				"getPortraitHeight"
+			],
+			[
+				"la",
+				"landscapeHeight"
+			],
+			[
+				"po",
+				"portraitHeight"
+			],
+			[
+				"get",
+				"getMargin"
+			],
+			[
+				"nb",
+				"nbPortrait"
+			],
+			[
+				"getPor",
+				"getPortraitWidth"
+			],
+			[
+				"land",
+				"landscapeWidth"
+			],
+			[
+				"lan",
+				"landscapeWidth"
+			],
+			[
+				"por",
+				"portrait"
+			],
+			[
+				"create",
+				"createImage"
+			],
+			[
+				"bor",
+				"border"
 			],
 			[
 				"bord",
@@ -36,16 +104,8 @@
 				"margin-left"
 			],
 			[
-				"font",
-				"font-size"
-			],
-			[
 				"backgr",
 				"background-size"
-			],
-			[
-				"for",
-				"for	for (…) {…}"
 			],
 			[
 				"fo",
@@ -54,10 +114,6 @@
 			[
 				"text",
 				"text-align"
-			],
-			[
-				"la",
-				"language"
 			],
 			[
 				"backgrou",
@@ -79,7 +135,7 @@
 			"file": "resources/sass/my-ext-theme.scss",
 			"settings":
 			{
-				"buffer_size": 2032,
+				"buffer_size": 3827,
 				"line_ending": "Unix"
 			}
 		},
@@ -87,7 +143,7 @@
 			"file": "app.js",
 			"settings":
 			{
-				"buffer_size": 257,
+				"buffer_size": 370,
 				"line_ending": "Unix"
 			}
 		},
@@ -100,10 +156,18 @@
 			}
 		},
 		{
-			"file": "app/view/Thumbnail.js",
+			"file": "app/view/Thumb.js",
 			"settings":
 			{
-				"buffer_size": 2021,
+				"buffer_size": 2316,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/view/Highlight.js",
+			"settings":
+			{
+				"buffer_size": 162,
 				"line_ending": "Unix"
 			}
 		},
@@ -111,9 +175,27 @@
 			"file": "app/controller/Gallery.js",
 			"settings":
 			{
-				"buffer_size": 1712,
+				"buffer_size": 7074,
 				"line_ending": "Unix",
 				"name": "Ext.define('Ezi.controller.Gallery', {"
+			}
+		},
+		{
+			"file": "app/model/Image.js",
+			"settings":
+			{
+				"buffer_size": 401,
+				"line_ending": "Unix",
+				"name": "Ext.define('Image', {"
+			}
+		},
+		{
+			"file": "app/store/Images.js",
+			"settings":
+			{
+				"buffer_size": 628,
+				"line_ending": "Unix",
+				"name": "Ext.create('Ext.data.Store', {"
 			}
 		},
 		{
@@ -125,18 +207,26 @@
 			}
 		},
 		{
-			"file": "/Users/ronan/Dropbox/dev/lib/js/usephototree/resources/css/uptstyle.css",
-			"settings":
-			{
-				"buffer_size": 1543,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "index.html",
 			"settings":
 			{
 				"buffer_size": 298,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/ronan/Dropbox/dev/lib/js/usephototree/usephototree.js",
+			"settings":
+			{
+				"buffer_size": 8824,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/ronan/Dropbox/dev/lib/js/usephototree/resources/css/uptstyle.css",
+			"settings":
+			{
+				"buffer_size": 1543,
 				"line_ending": "Unix"
 			}
 		}
@@ -169,6 +259,7 @@
 	},
 	"file_history":
 	[
+		"/Users/ronan/Dropbox/dev/lib/js/usephototree/resources/css/uptstyle.css",
 		"/Users/ronan/dev/ext-img-zoom/resources/sass/my-ext-theme.scss",
 		"/Users/ronan/dev/ext-img-zoom/index.html",
 		"/Users/ronan/dev/ext-img-zoom/app.js",
@@ -211,7 +302,6 @@
 		"/Users/ronan/dev/usephototree/app/data/configTest.json",
 		"/Users/ronan/dev/usephototree/app/view/Main.js",
 		"/Users/ronan/dev/usephototree/app/model/Nodes.js",
-		"/Users/ronan/Dropbox/dev/lib/js/usephototree/resources/css/uptstyle.css",
 		"/Users/ronan/Dropbox/dev/lib/js/usephototree/resources/css/style.css",
 		"/Users/ronan/Dropbox/dev/lib/js/usephototree/testPage.html",
 		"/Users/ronan/Dropbox/dev/lib/js/usephototree/resources/css/pola.css",
@@ -275,7 +365,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"/Users/ronan/dev/ext-zoom-image/extjs/resources",
@@ -288,6 +378,17 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"highlighted",
+			"createImage",
+			"s[i]",
+			"this.getLandscapeWidth()",
+			"this.getLandscapeHeight",
+			"this.getMargin",
+			"this.getPortraitHeight",
+			"this.getPortraitWidth",
+			"getBackgroundUrl",
+			"getMiniHeight",
+			"getMiniWidth",
 			"x-border-layout-ct",
 			"overflow",
 			"/images/",
@@ -358,6 +459,16 @@
 		"regex": false,
 		"replace_history":
 		[
+			"createThumb",
+			"s.getAt(i)",
+			"landscapeWidth",
+			"landscapeHeight",
+			"margin",
+			"portraitHeight",
+			"portraitWidth",
+			"getThumbBckUrl",
+			"getPortraitHeight",
+			"getPortraitWidth",
 			"/images/countdown/",
 			"getNodeI18n",
 			"renderNodeBig",
@@ -401,7 +512,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 9,
 			"sheets":
 			[
 				{
@@ -409,15 +520,15 @@
 					"file": "resources/sass/my-ext-theme.scss",
 					"settings":
 					{
-						"buffer_size": 2032,
+						"buffer_size": 3827,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1978,
-								1978
+								3603,
+								3603
 							]
 						],
 						"settings":
@@ -427,7 +538,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 140.0,
+						"translation.y": 1505.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -437,15 +548,15 @@
 					"file": "app.js",
 					"settings":
 					{
-						"buffer_size": 257,
+						"buffer_size": 370,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								178,
-								178
+								219,
+								219
 							]
 						],
 						"settings":
@@ -472,8 +583,8 @@
 						"selection":
 						[
 							[
-								91,
-								101
+								21,
+								28
 							]
 						],
 						"settings":
@@ -490,18 +601,18 @@
 				},
 				{
 					"buffer": 3,
-					"file": "app/view/Thumbnail.js",
+					"file": "app/view/Thumb.js",
 					"settings":
 					{
-						"buffer_size": 2021,
+						"buffer_size": 2316,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								78,
-								107
+								492,
+								570
 							]
 						],
 						"settings":
@@ -518,18 +629,46 @@
 				},
 				{
 					"buffer": 4,
-					"file": "app/controller/Gallery.js",
+					"file": "app/view/Highlight.js",
 					"settings":
 					{
-						"buffer_size": 1712,
+						"buffer_size": 162,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1712,
-								1712
+								158,
+								158
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/controller/Gallery.js",
+					"settings":
+					{
+						"buffer_size": 7074,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2018,
+								2018
 							]
 						],
 						"settings":
@@ -540,13 +679,69 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 185.0,
+						"translation.y": 221.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
+					"file": "app/model/Image.js",
+					"settings":
+					{
+						"buffer_size": 401,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								182,
+								197
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Ext.define('Image', {",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/store/Images.js",
+					"settings":
+					{
+						"buffer_size": 628,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								594,
+								602
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Ext.create('Ext.data.Store', {",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
 					"file": "/Users/ronan/dev/lib/js/sencha/extjs-4.1.1/examples/app/feed-viewer/app.js",
 					"settings":
 					{
@@ -574,35 +769,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "/Users/ronan/Dropbox/dev/lib/js/usephototree/resources/css/uptstyle.css",
-					"settings":
-					{
-						"buffer_size": 1543,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								295,
-								300
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
+					"buffer": 9,
 					"file": "index.html",
 					"settings":
 					{
@@ -620,6 +787,62 @@
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/Users/ronan/Dropbox/dev/lib/js/usephototree/usephototree.js",
+					"settings":
+					{
+						"buffer_size": 8824,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6212,
+								6370
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2542.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "/Users/ronan/Dropbox/dev/lib/js/usephototree/resources/css/uptstyle.css",
+					"settings":
+					{
+						"buffer_size": 1543,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								534,
+								334
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

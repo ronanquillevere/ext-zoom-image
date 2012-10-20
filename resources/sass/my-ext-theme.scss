@@ -120,3 +120,36 @@ $relative-image-path-for-uis: true; // defaults to "../images/" when true
     font-style: italic;
     float: right;
 }
+
+.ezi-highlight {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.ezi-highlight .ezi-portrait {
+    height: 100%;
+    width: 100%;
+    
+    z-index: 1;
+
+    background-size: auto 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-transform-style: preserve-3d;
+}
+
+.ezi-highlight .ezi-landscape {
+    height: 100%;
+    width: 100%;
+    
+    z-index: 1;
+
+    background-size: 100% auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-transform-style: preserve-3d;
+}
+

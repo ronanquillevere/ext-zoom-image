@@ -1,18 +1,19 @@
-Ext.define('Ezi.view.Image', {
+Ext.define('Ezi.view.Thumb', {
     extend: 'Ext.container.Container',
     alias: 'widget.eziThumbnail',
 
     config : {
         cls: 'ezi-thumbnail',
         thumbBckUrl : null,
-        highlightBckUrl : null,
         deltaWidth : 5,
         deltaHeight : 5,
         orgWidth : null,
         orgHeight : null,
-        highlighted : false,
+        hover : false,
         portrait: true,
         html: null,
+        id: null,
+        controller: null,
  
         listeners: {
             beforeRender: function(component, eOps) {          
@@ -24,16 +25,17 @@ Ext.define('Ezi.view.Image', {
                 this.setOrgHeight(this.getHeight());
                 component.getEl().on('mouseover',this.handleMouseOver, this);
                 component.getEl().on('mouseout',this.handleMouseOut, this);
+                component.getEl().on('click',this.handleClick, this);
             }
         }      
     },
 
     handleMouseOver: function(e, t, eOpts){
-        this.setHighlighted(true);
+        this.setHover(true);
 
         var t = this;
         var task = new Ext.util.DelayedTask(function(){        
-            if (t.getHighlighted()){
+            if (t.getHover()){
                 t.bigger();
             }
         });
@@ -43,8 +45,14 @@ Ext.define('Ezi.view.Image', {
     },    
 
     handleMouseOut: function(e, t, eOpts){
-        this.setHighlighted(false);
+        this.setHover(false);
         this.smaller();
+    },
+
+    handleClick: function(e, t, eOpts){
+        if (!!this.getController()){
+             this.getController().fireEvent('highlightEvent', {id: t.id});
+        }
     },
 
     initComponent: function() {

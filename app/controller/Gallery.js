@@ -1,5 +1,6 @@
 Ext.define('Ezi.controller.Gallery', {
     extend: 'Ext.app.Controller',
+    requires: ['Ext.util.History','Ext.util.HashMap'],
 
     refs: [
         {
@@ -25,11 +26,37 @@ Ext.define('Ezi.controller.Gallery', {
         landscapeWidth: 210,
         landscapeHeight: 245, 
         margin: 5,
-        images:[]
+        images: new Ext.util.HashMap(),
+        highlightMatch: /highlight:(\w+)/g,
+        highlight: null,
+        tokenDelimiter: ':',
+
+        listeners: {
+            highlightEvent: function(options) {
+                var newToken, oldToken;
+
+                newToken = "highlight"+ this.getTokenDelimiter() + options.id;
+        
+                oldToken = Ext.History.getToken();
+       
+                if (oldToken === null || oldToken.search(newToken) === -1) {
+                    Ext.History.add(newToken);
+                }               
+            },
+
+            urlChanged: function(options){
+                this.renderHighlight(options);
+            }
+        }      
     },
 
-    
     init: function() {
+        Ext.History.init();
+        var url = window.location.href,
+            hashIdx=0,
+            match,
+            token;
+
         this.control({
             'viewport': {
                 resize: this.handleResize
@@ -57,8 +84,50 @@ Ext.define('Ezi.controller.Gallery', {
         });
 
         this.buildGallery(); 
+
+        Ext.History.on('change', function(token) {
+            var parts, length, el;
+
+            if (token) {
+                parts = token.split(this.getTokenDelimiter());
+                length = parts.length;
+                
+                this.fireEvent('urlChanged',{id: parts[1]});
+            } else {               
+                if (this.getHighlight())
+                    this.getGallery().remove(this.getHighlight());
+            }
+        }, this);
+
+        token = Ext.History.getToken();
+
+        if (token){
+            match = this.getHighlightMatch().exec(token);
+            if (match && match.length > 0){     
+                this.renderHighlight({id:match[1]});
+            }
+        }
     },
 
+    renderHighlight: function(options){
+        var img = this.getStore("Images").getById(options.id),
+            config = {portrait: img.get('portrait')},
+            idp = 'ezi-portrait',
+            idl = 'ezi-landscape',
+            el,
+            highlight;
+
+        if (config.portrait){
+            config.html = '<div class="ezi-portrait" id="big'+ options.id +'"></div>';
+        } else {
+            config.html = '<div class="ezi-landscape" id="big'+ options.id +'"></div>';
+        }
+
+        this.setHighlight(Ext.create('Ezi.view.Highlight',config));
+        this.getGallery().add([this.getHighlight()]);
+        el = document.getElementById('big'+ options.id);
+        el.style.backgroundImage = 'url(\'' + img.get('highlightBckUrl') + '\')';
+    },
 
     buildGallery: function(){
         var vw = this.getViewport().getWidth(),
@@ -66,19 +135,20 @@ Ext.define('Ezi.controller.Gallery', {
         s = this.getStore("Images");
 
         for (var i = 0; i < s.getCount(); i++) {
-            this.getImages().push( this.createImage(
+            this.getImages().add( s.getAt(i).get('id'), this.createThumb(
             s.getAt(i).get('thumbBckUrl'),
-            s.getAt(i).get('highlightBckUrl'),
             this.getPortraitWidth(),
             this.getPortraitHeight(),
             s.getAt(i).get('portrait'),
             s.getAt(i).get('title'),
-            s.getAt(i).get('miniDesc')
+            s.getAt(i).get('miniDesc'),
+            s.getAt(i).get('id'),
+            this
             ));
         };
 
         this.layoutImages(this.getImages(), this.getPortraitWidth(), this.getLandscapeWidth(), this.getPortraitHeight(), this.getLandscapeHeight(), this.getMargin());
-        this.getGallery().add(this.getImages());
+        this.getGallery().add(this.getImages().getValues());
     },
 
 
@@ -93,69 +163,62 @@ Ext.define('Ezi.controller.Gallery', {
 
     handleResize: function(){
         this.layoutImages(this.getImages(), this.getPortraitWidth(), this.getLandscapeWidth(), this.getPortraitHeight(), this.getLandscapeHeight(), this.getMargin());
-        var images = this.getImages();
 
-        for (i = 0; i < images.length; i++) {
-            img = this.images[i];
-             img.animate({
+        this.getImages().each (function(key, value, length){
+             value.animate({
                 to: {
-                    x: this.getMargin() + img.x, //add border width if there is a border to the gallery
-                    y: this.getMargin() + 30 + img.y //add border width if there is a border to the gallery
+                    x: this.getMargin() + value.x, //add border width if there is a border to the gallery
+                    y: this.getMargin() + 30 + value.y //add border width if there is a border to the gallery
                 }
             });
-         }
-
-
+        }, this);
     },
 
     layoutImages: function (images, portraitWidth, landscapeWidth, portraitHeight, landscapeHeight, margin){
-         var nbLandscape = 0,
+        var nbLandscape = 0,
             nbPortrait = 0,
             nb = 0,
             line = 0,
-            i,
-            img,
             tmpx,
             tmpwidth,
             minWidth;
         
-        for (i = 0; i < images.length; i++) {
-            img = this.images[i];
-            
-
-            tmpwidth = (img.getPortrait() ? portraitWidth : landscapeWidth);
+        var ctlr = this;
+        images.each (function(key, value, length){
+            tmpwidth = (value.getPortrait() ? portraitWidth : landscapeWidth);
             minWidth = (tmpwidth + margin*2);
 
-            tmpx = this.computeX(margin, nbLandscape, nbPortrait, landscapeWidth, portraitWidth);
+            tmpx = ctlr.computeX(margin, nbLandscape, nbPortrait, landscapeWidth, portraitWidth);
 
-           if ( !(nb === 0 && this.getViewport().getWidth() < minWidth) && tmpx > (this.getViewport().getWidth() - minWidth)){
+            if ( !(nb === 0 && ctlr.getViewport().getWidth() < minWidth) && tmpx > (ctlr.getViewport().getWidth() - minWidth)){
                 line++;
                 nbLandscape = 0;
                 nbPortrait = 0;
                 nb = 0;
-                tmpx = this.computeX(margin, nbLandscape, nbPortrait, landscapeWidth, portraitWidth);
+                tmpx = ctlr.computeX(margin, nbLandscape, nbPortrait, landscapeWidth, portraitWidth);
             }
                 
-            img.x = tmpx;
-            img.y = this.computeY(line, margin, ((portraitHeight > landscapeHeight) ? portraitHeight : landscapeHeight ));
+            value.x = tmpx;
+            value.y = ctlr.computeY(line, margin, ((portraitHeight > landscapeHeight) ? portraitHeight : landscapeHeight ));
             
-            if (img.getPortrait())
+            if (value.getPortrait())
                 nbPortrait++;
             else
                 nbLandscape++; 
-            nb++;   
-        }
+            nb++;
+        });
     },
 
 
-    createImage: function (thumbUrl, bigUrl, width, height, portrait, title, minidesc){
-        return  Ext.create('Ezi.view.Image', {
+    createThumb: function (thumbUrl, width, height, portrait, title, minidesc,id, controller){
+        return  Ext.create('Ezi.view.Thumb', {
                 width: width,
                 height: height,          
                 thumbBckUrl: thumbUrl,
-                bigBckUrl: bigUrl,
                 portrait: portrait,
-                html: '<div class="ezi-thumbnail-desc"><div class="ezi-thumbnail-title">'+ title +'</div><div class="ezi-thumbnail-minidesc">'+ minidesc +'</div></div>'
+                html: '<div class="ezi-thumbnail-desc"><div class="ezi-thumbnail-title">'+ title +'</div><div class="ezi-thumbnail-minidesc">'+ minidesc +'</div></div>',
+                id:id,
+                controller:controller
         });
     }
 

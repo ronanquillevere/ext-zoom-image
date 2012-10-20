@@ -7,5 +7,6 @@ Ext.define('Ezi.model.Image', {
          {name: 'portrait',       type: 'boolean'},
          {name: 'title',       type: 'string'},
          {name: 'miniDesc',       type: 'string'}
-     ]
+     ],
+     idProperty:'id'
  });

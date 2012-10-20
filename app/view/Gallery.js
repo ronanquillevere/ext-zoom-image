@@ -3,6 +3,6 @@ Ext.define('Ezi.view.Gallery', {
     alias: 'widget.eziGallery',
     
     config : {
-        cls: 'ezi-gallery'
+        cls: 'ezi-gallery' 
     }
 });
