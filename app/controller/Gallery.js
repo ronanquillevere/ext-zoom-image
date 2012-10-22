@@ -1,6 +1,6 @@
 Ext.define('Ezi.controller.Gallery', {
     extend: 'Ext.app.Controller',
-    requires: ['Ext.util.History','Ext.util.HashMap'],
+    requires: ['Ext.util.History','Ext.util.HashMap', 'Ext.toolbar.Toolbar','Ext.form.Label'],
 
     refs: [
         {
@@ -14,6 +14,14 @@ Ext.define('Ezi.controller.Gallery', {
         {
             ref: 'header',
             selector: 'x-panel-header'
+        },
+        {
+            ref: 'toolbar',
+            selector: '#eziToolbar'
+        },
+        {
+            ref: 'closeBtn',
+            selector: '#eziCloseButton'
         }
     ],
 
@@ -51,40 +59,51 @@ Ext.define('Ezi.controller.Gallery', {
     },
 
     init: function() {
-        Ext.History.init();
         var url = window.location.href,
             hashIdx=0,
             match,
-            token;
+            token,
+            btn;
 
         this.control({
             'viewport': {
                 resize: this.handleResize
+            },
+            'closeHighlight': {
+                click:  function(){
+                    alert('click');
+                },
+                mouseover: function(){
+                    alert('mouseover');
+                }
             }
         });
 
-        Ext.create('Ext.container.Viewport', {
-            layout: 'border',
-            cls: 'ezi-viewport',
-            id: 'eziViewport',
-            items: [
-            {
-                region: 'north',
-                html: '<h1 class="ezi-toolbar">Toolbar</h1>',
-                border: false,
-                margins: '0 0 0 0',
-                cls: 'ezi-gallery-north'
-            },{
-                region: 'center',
-                xtype: 'eziGallery', 
-                id: 'eziGallery',
-                layout: 'absolute',
-                autoScroll: true
-            }]
-        });
+        Ext.create('Ezi.view.MainView');
 
         this.buildGallery(); 
+        this.initCloseButton();
+        this.initHistory();
 
+    },
+
+    initCloseButton: function(){
+        btn = Ext.create('Ext.button.Button',{
+                text: 'close',
+                id: 'eziCloseButton',
+                cls:'ezi-toolbar-button ezi-toolbar-button-close',
+                iconAlign: 'right',
+                iconCls:'ezi-close-btn',
+                handler: function(btn){
+                        Ext.History.back();
+                }
+            });
+        btn.hide();
+        this.getToolbar().add(btn);
+    },
+
+    initHistory: function(){
+        Ext.History.init();
         Ext.History.on('change', function(token) {
             var parts, length, el;
 
@@ -93,9 +112,8 @@ Ext.define('Ezi.controller.Gallery', {
                 length = parts.length;
                 
                 this.fireEvent('urlChanged',{id: parts[1]});
-            } else {               
-                if (this.getHighlight())
-                    this.getGallery().remove(this.getHighlight());
+            } else {
+                this.clean();               
             }
         }, this);
 
@@ -109,13 +127,18 @@ Ext.define('Ezi.controller.Gallery', {
         }
     },
 
+    clean: function(){
+        this.getGallery().remove(this.getHighlight());
+        this.getCloseBtn().hide();
+    },
+
     renderHighlight: function(options){
         var img = this.getStore("Images").getById(options.id),
             config = {portrait: img.get('portrait')},
             idp = 'ezi-portrait',
             idl = 'ezi-landscape',
             el,
-            highlight;
+            highligh;
 
         if (config.portrait){
             config.html = '<div class="ezi-portrait" id="big'+ options.id +'"></div>';
@@ -126,7 +149,9 @@ Ext.define('Ezi.controller.Gallery', {
         this.setHighlight(Ext.create('Ezi.view.Highlight',config));
         this.getGallery().add([this.getHighlight()]);
         el = document.getElementById('big'+ options.id);
-        el.style.backgroundImage = 'url(\'' + img.get('highlightBckUrl') + '\')';
+        el.style.backgroundImage = 'url(\'' + img.get('highlightBckUrl') + '\')';   
+
+        this.getCloseBtn().show();
     },
 
     buildGallery: function(){
