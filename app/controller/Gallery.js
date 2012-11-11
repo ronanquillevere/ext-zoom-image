@@ -22,6 +22,10 @@ Ext.define('Ezi.controller.Gallery', {
         {
             ref: 'closeBtn',
             selector: '#eziCloseButton'
+        },
+        {
+            ref: 'filterBtn',
+            selector: '#eziFilterButton'
         }
     ],
 
@@ -29,15 +33,18 @@ Ext.define('Ezi.controller.Gallery', {
 
     config: {
         //all values in pixels
-        portraitWidth: 210,
+        portraitWidth: 245,
         portraitHeight: 245, 
-        landscapeWidth: 210,
+        landscapeWidth: 245,
         landscapeHeight: 245, 
         margin: 5,
         images: new Ext.util.HashMap(),
         highlightMatch: /highlight:(\w+)/g,
+        filterMatch: /filter:(\w+)/g,
         highlight: null,
         tokenDelimiter: ':',
+        filters: [],
+        activeFilters: [],
 
         listeners: {
             highlightEvent: function(options) {
@@ -52,8 +59,41 @@ Ext.define('Ezi.controller.Gallery', {
                 }               
             },
 
-            urlChanged: function(options){
-                this.renderHighlight(options);
+            filterEvent: function(filter) {
+                var oldToken;
+                
+                oldToken = Ext.History.getToken();
+                
+                if (filter.checked === true) {
+                    if (oldToken === null || oldToken === "") {
+                        Ext.History.add("filter"+ this.getTokenDelimiter() + filter.tag); 
+                    } else if (oldToken.search(filter.tag) === -1) {
+                        Ext.History.add(oldToken + "," + filter.tag); 
+                    }
+                } else {
+                    if (oldToken !== null && oldToken.search(filter.tag) !== -1) {
+                        oldToken = oldToken.replace(","+filter.tag, "");
+                        oldToken = oldToken.replace(filter.tag + ",", "");
+                        oldToken = oldToken.replace(filter.tag, "");
+                        if (oldToken === ("filter"+ this.getTokenDelimiter()))
+                            oldToken = "";
+                        Ext.History.add(oldToken);
+                    }
+                }
+            },
+
+            urlChanged: function(options){              
+                if (!options){
+                    this.setActiveFilters([]);
+                    if (this.getHighlight())
+                        this.clean();   
+                } else if (options.type === 'highlight'){
+                    this.renderHighlight(options);
+                } else if (options.type === 'filter'){
+                    this.setActiveFilters(options.id.trim().replace(" ","").split(","));     
+                }
+
+                this.filterGallery();  
             }
         }      
     },
@@ -62,32 +102,27 @@ Ext.define('Ezi.controller.Gallery', {
         var url = window.location.href,
             hashIdx=0,
             match,
-            token,
-            btn;
+            token;
 
         this.control({
             'viewport': {
                 resize: this.handleResize
-            },
-            'closeHighlight': {
-                click:  function(){
-                    alert('click');
-                },
-                mouseover: function(){
-                    alert('mouseover');
-                }
             }
         });
 
         Ext.create('Ezi.view.MainView');
 
+
         this.buildGallery(); 
-        this.initCloseButton();
+        this.initToolbarButtons();
         this.initHistory();
 
     },
 
-    initCloseButton: function(){
+    initToolbarButtons: function(){
+
+        var btn, f, i, menu;
+
         btn = Ext.create('Ext.button.Button',{
                 text: 'close',
                 id: 'eziCloseButton',
@@ -99,31 +134,70 @@ Ext.define('Ezi.controller.Gallery', {
                 }
             });
         btn.hide();
+
+        menu = Ext.create('Ext.menu.Menu');
+
+        for (i = 0; i < this.getFilters().length; i++) {          
+            f = this.getFilters()[i];
+
+            menu.add(
+                {
+                    text: i18n.filter[f],
+                    checked:false,
+                    checkHandler: this.onItemCheck,
+                    tag: f,
+                    controller: this
+                }
+            );
+        };
+
+        this.getFilterBtn().menu = menu;
+
         this.getToolbar().add(btn);
     },
 
+    onItemCheck: function(item, checked){
+        item.controller.fireEvent('filterEvent', {tag: item.tag, checked: checked});
+    },
+
+
     initHistory: function(){
+        var tok;
         Ext.History.init();
         Ext.History.on('change', function(token) {
-            var parts, length, el;
-
-            if (token) {
-                parts = token.split(this.getTokenDelimiter());
-                length = parts.length;
-                
-                this.fireEvent('urlChanged',{id: parts[1]});
-            } else {
-                this.clean();               
-            }
+            this.fireUrlChange(token);
         }, this);
 
-        token = Ext.History.getToken();
+        //need to open gallery with filter == back from highlight -> filtered gallery
 
-        if (token){
-            match = this.getHighlightMatch().exec(token);
-            if (match && match.length > 0){     
-                this.renderHighlight({id:match[1]});
-            }
+        tok = Ext.History.getToken();
+
+        if (!!tok){           
+            this.fireUrlChange(tok);
+
+            click on the corresponding menu button
+        }
+
+        // if (!!tok){
+        //     match = this.getFilterMatch().exec(tok);
+        //     if (match){
+        //          Ext.History.add("");
+        //     } else {          
+        //         this.fireUrlChange(tok);
+        //     }
+        // }
+    },
+
+    fireUrlChange: function(token){
+        var parts, length, el;
+
+        if (token) {
+            parts = token.split(this.getTokenDelimiter());
+            length = parts.length;
+            
+            this.fireEvent('urlChanged',{id: parts[1], type: parts[0]});
+        } else {
+            this.fireEvent('urlChanged', null);            
         }
     },
 
@@ -156,27 +230,70 @@ Ext.define('Ezi.controller.Gallery', {
 
     buildGallery: function(){
         var vw = this.getViewport().getWidth(),
-        vh = this.getViewport().getHeight();
-        s = this.getStore("Images");
+        vh = this.getViewport().getHeight(),
+        s = this.getStore("Images"),
+        i,tags,tagTab;
 
-        for (var i = 0; i < s.getCount(); i++) {
-            this.getImages().add( s.getAt(i).get('id'), this.createThumb(
-            s.getAt(i).get('thumbBckUrl'),
-            this.getPortraitWidth(),
-            this.getPortraitHeight(),
-            s.getAt(i).get('portrait'),
-            s.getAt(i).get('title'),
-            s.getAt(i).get('miniDesc'),
-            s.getAt(i).get('id'),
-            this
-            ));
+        
+        var createThumbs = function(s){    
+            for (i = 0; i < s.getCount(); i++) {
+                //set filters
+                tags = s.getAt(i).get('tags');
+                tags = tags.trim().replace(/[ ]+/g," ");
+                tagTab = tags.split(" ");
+                this.fillFilters(tagTab);
+
+
+                this.getImages().add(
+                    s.getAt(i).get('id'), 
+                    this.createThumb(
+                        s.getAt(i).get('thumbBckUrl'),
+                        this.getPortraitWidth(),
+                        this.getPortraitHeight(),
+                        s.getAt(i).get('portrait'),
+                        i18n.people[s.getAt(i).get('id')].title,
+                        i18n.people[s.getAt(i).get('id')].miniDesc,
+                        s.getAt(i).get('id'),
+                        this,
+                        s.getAt(i).get('tags')
+                    )
+                );
+
+                tags = "";
+                tagTab = [];
+            }
+
+            this.layoutImages(this.getImages(), this.getPortraitWidth(), this.getLandscapeWidth(), this.getPortraitHeight(), this.getLandscapeHeight(), this.getMargin());
+            this.getGallery().add(this.getImages().getValues()); 
         };
 
-        this.layoutImages(this.getImages(), this.getPortraitWidth(), this.getLandscapeWidth(), this.getPortraitHeight(), this.getLandscapeHeight(), this.getMargin());
-        this.getGallery().add(this.getImages().getValues());
+        createThumbs.call(this, s);
+        
+        //debugger;
+        // s.load({
+        //         scope: this,
+        //         callback:
+        //             function(records, operation, success) {
+        //                 //debugger;
+        //                 if (success){
+        //                       console.log('loaded records'); 
+        //                       innerBuildGallery(s);        
+        //                 } else {
+        //                     console.log('fail to load records');
+        //                 }
+        //             }
+        //     }
+        //);
     },
 
-
+    fillFilters: function (tab){
+        var i;
+        for (i = 0; i < tab.length; i++) {          
+            if (this.getFilters().indexOf(tab[i]) === -1){
+                this.getFilters().push(tab[i]);
+            }
+        }
+    },
 
     computeX: function (margin, linePrevLand, linePreviousPortrait, landscapeWidth, portraitWidth){
         return linePreviousPortrait * portraitWidth + linePrevLand * landscapeWidth + margin * 2 * (linePrevLand+linePreviousPortrait);
@@ -234,8 +351,31 @@ Ext.define('Ezi.controller.Gallery', {
         });
     },
 
+    filterGallery: function(){   
+        var ctlr = this;     
+        this.getImages().each (
+            function(key, value, length){
+                var visible = false;
+                if (ctlr.getActiveFilters().length>0){
+                    for (var i = 0; i < ctlr.getActiveFilters().length && !visible; i++) {
+                        if (value.getTags().indexOf(ctlr.getActiveFilters()[i]) !== -1){
+                            visible = true;
+                        }
+                    };
+                } else {
+                    visible = true;
+                }
 
-    createThumb: function (thumbUrl, width, height, portrait, title, minidesc,id, controller){
+                if (!visible)
+                    value.hide();
+                else
+                    value.show();
+            }
+        );
+    },
+
+
+    createThumb: function (thumbUrl, width, height, portrait, title, minidesc,id, controller, tags){
         return  Ext.create('Ezi.view.Thumb', {
                 width: width,
                 height: height,          
@@ -243,7 +383,8 @@ Ext.define('Ezi.controller.Gallery', {
                 portrait: portrait,
                 html: '<div class="ezi-thumbnail-desc"><div class="ezi-thumbnail-title">'+ title +'</div><div class="ezi-thumbnail-minidesc">'+ minidesc +'</div></div>',
                 id:id,
-                controller:controller
+                controller:controller,
+                tags: tags
         });
     }
 

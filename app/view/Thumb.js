@@ -14,6 +14,7 @@ Ext.define('Ezi.view.Thumb', {
         html: null,
         id: null,
         controller: null,
+        tags: null,
  
         listeners: {
             beforeRender: function(component, eOps) {          

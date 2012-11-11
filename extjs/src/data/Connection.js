@@ -294,6 +294,7 @@ Ext.define('Ext.data.Connection', {
                 xhr.onreadystatechange = Ext.Function.bind(me.onStateChange, me, [request]);
             }
 
+            //debugger;
             // start the request!
             xhr.send(requestOptions.data);
             if (!async) {
