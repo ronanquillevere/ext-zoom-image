@@ -181,10 +181,12 @@ $relative-image-path-for-uis: true; // defaults to "../images/" when true
 }
 
 .ezi-highlight {
-    display: block;
-    position: absolute;
-    width: 100%;
+    position: fixed !important;
+    top: 0;
+    left: 0;
     height: 100%;
+    width: 100%;
+    display: block;
     background-color: rgba(0,0,0,0.7);
 }
 

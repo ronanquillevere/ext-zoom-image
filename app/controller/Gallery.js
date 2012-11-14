@@ -40,9 +40,10 @@ Ext.define('Ezi.controller.Gallery', {
         margin: 5,
         images: new Ext.util.HashMap(),
         highlightMatch: /highlight:(\w+)/g,
-        filterMatch: /filter:(\w+)/g,
+        filterMatch: /filter:(\w+)(,(\w+))*/g,
         highlight: null,
         tokenDelimiter: ':',
+        menuFilterId: 'menuFilterId',
         filters: [],
         activeFilters: [],
 
@@ -86,11 +87,13 @@ Ext.define('Ezi.controller.Gallery', {
                 if (!options){
                     this.setActiveFilters([]);
                     if (this.getHighlight())
-                        this.clean();   
+                        this.cleanHighlight();   
                 } else if (options.type === 'highlight'){
                     this.renderHighlight(options);
                 } else if (options.type === 'filter'){
-                    this.setActiveFilters(options.id.trim().replace(" ","").split(","));     
+                    this.setActiveFilters(options.id.trim().replace(" ","").split(","));    
+                    if (this.getHighlight())
+                        this.cleanHighlight();  
                 }
 
                 this.filterGallery();  
@@ -121,7 +124,7 @@ Ext.define('Ezi.controller.Gallery', {
 
     initToolbarButtons: function(){
 
-        var btn, f, i, menu;
+        var btn, f, i, menu, id;
 
         btn = Ext.create('Ext.button.Button',{
                 text: 'close',
@@ -135,7 +138,8 @@ Ext.define('Ezi.controller.Gallery', {
             });
         btn.hide();
 
-        menu = Ext.create('Ext.menu.Menu');
+
+        menu = Ext.create('Ext.menu.Menu', {id:this.getMenuFilterId()});
 
         for (i = 0; i < this.getFilters().length; i++) {          
             f = this.getFilters()[i];
@@ -146,10 +150,11 @@ Ext.define('Ezi.controller.Gallery', {
                     checked:false,
                     checkHandler: this.onItemCheck,
                     tag: f,
-                    controller: this
+                    controller: this,
+                    id : f
                 }
             );
-        };
+        }
 
         this.getFilterBtn().menu = menu;
 
@@ -162,7 +167,7 @@ Ext.define('Ezi.controller.Gallery', {
 
 
     initHistory: function(){
-        var tok;
+        var tok, match, menu,i;
         Ext.History.init();
         Ext.History.on('change', function(token) {
             this.fireUrlChange(token);
@@ -175,7 +180,18 @@ Ext.define('Ezi.controller.Gallery', {
         if (!!tok){           
             this.fireUrlChange(tok);
 
-            click on the corresponding menu button
+            match = this.getFilterMatch().exec(tok);
+            if (match){
+                //click on the corresponding menu button
+                menu = Ext.menu.Manager.get(this.getMenuFilterId());
+                for (i = 0; i < match.length; i++) {
+                    var cb = menu.items.getByKey(match[i]);
+                    if (cb)
+                        cb.checked = true;
+                } 
+                
+            }
+            
         }
 
         // if (!!tok){
@@ -201,7 +217,7 @@ Ext.define('Ezi.controller.Gallery', {
         }
     },
 
-    clean: function(){
+    cleanHighlight: function(){
         this.getGallery().remove(this.getHighlight());
         this.getCloseBtn().hide();
     },
@@ -352,16 +368,16 @@ Ext.define('Ezi.controller.Gallery', {
     },
 
     filterGallery: function(){   
-        var ctlr = this;     
+        var ctlr = this,i;     
         this.getImages().each (
             function(key, value, length){
                 var visible = false;
                 if (ctlr.getActiveFilters().length>0){
-                    for (var i = 0; i < ctlr.getActiveFilters().length && !visible; i++) {
+                    for (i = 0; i < ctlr.getActiveFilters().length && !visible; i++) {
                         if (value.getTags().indexOf(ctlr.getActiveFilters()[i]) !== -1){
                             visible = true;
                         }
-                    };
+                    }
                 } else {
                     visible = true;
                 }
